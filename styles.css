@@ -1,0 +1,46 @@
+body{
+  font-family: "Poiret One", Comfortaa, sans-serif;
+  background-color: #e5dcb9;
+  text-align: center;
+}
+ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 15px auto 15px auto;
+  width: 100%;
+}
+li {
+  font-family: Comfortaa, "Poiret One", sans-serif;
+  background-color: #FFF;
+  display: inline;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #FFF;
+  border-radius: 50%;
+}
+legend {
+  font-size: 20px;
+}
+li.controls {
+  background-color: #e5dcb9;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+.listItem {
+  background-color: #0a527f;
+  margin: 15px 0 0 0;
+  border: 2px solid #FFF;
+  border-radius: 0;
+  width: 100%;
+}
+.bad {
+  background-color: #FF4719;
+}
+.satisfactory {
+  background-color: #FFFF66;
+}
+.good {
+  background-color: #66FF66;
+}

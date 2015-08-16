@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Employee Data</title>
+    <link href='http://fonts.googleapis.com/css?family=Comfortaa%7CPoiret+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="./scripts/employeeData.js"></script>
+    <script src="./scripts/nameGen.js"></script>
+  </head>
+
+  <body>
+    <h1>Employee Data Input</h1>
+    <form name="EmployeeForm">
+      <fieldset>
+        <legend>Employee Input</legend>
+        <label for="FirstName">First Name: </label>
+        <input type="text" id="FirstName" class="field">
+
+        <label for="LastName">Last Name: </label>
+        <input type="text" id="LastName" class="field">
+
+        <label for="EmpNum">Emp. Number: </label>
+        <input type="number" id="EmpNum" class="field">
+
+        <label for="Title">Title: </label>
+        <select id="Title" class="field" required>
+          <option value>--Select Title--</option>
+          <option value="CEO">CEO</option>
+          <option value="President">President</option>
+          <option value="VP">VP</option>
+          <option value="Chairman">Chairmain</option>
+          <option value="Manager">Manager</option>
+          <option value="PM">Project Manager</option>
+          <option value="BA">Business Analyst</option>
+          <option value="Front-End Developer">Front-End Developer</option>
+          <option value="Back-End Developer">Back-End Developer</option>
+          <option value="Admin">Admin</option>
+          <option value="Janitor">Janitor</option>
+        </select>
+
+        <label for="Review">Review Score: </label>
+        <select id="Review" class="field" required>
+          <option value>--Select Score--</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+        </select>
+        <label for="Salary">Salary: </label>
+        <input type="number" id="Salary" class="field">
+
+        <label for="submit"></label>
+        <input type="submit" id="Submit">
+
+        <label for="Reset"></label>
+        <button id="Reset">Reset</button>
+      </fieldset>
+      <fieldset>
+        <legend>Options</legend>
+        <ul class="controlList">
+          <li class="controls"><button id="RandEmp">Random Employee</button></li>
+          <li class="controls"><button id="Populate">Show Employees</button></li>
+          <li class="controls"><button id="unPopulate">Hide Employees</buttin></li>
+          <li class="controls"><button id="Sort">Sort Alphbetically</button></li>
+          <li class="controls"><button id="ClearAll">Delete All</button></li>
+        </ul>
+      </fieldset>
+    </form>
+    <h2>Total Salaries: <span id="TotalSalary">$0</span></h2>
+    <div id="EmpTable">
+
+    </div>
+  </body>
+</html
