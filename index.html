@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Employee Data</title>
+    <title>Employee Tracker</title>
     <link href='http://fonts.googleapis.com/css?family=Comfortaa%7CPoiret+One' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -16,7 +16,7 @@
     <h1>Employee Data Input</h1>
     <form name="EmployeeForm">
       <fieldset>
-        <legend>Employee Input</legend>
+        <legend id="EIF">Employee Input Field</legend>
         <label for="FirstName">First Name: </label>
         <input type="text" id="FirstName" class="field">
 
@@ -64,9 +64,10 @@
         <legend>Options</legend>
         <ul class="controlList">
           <li class="controls"><button id="RandEmp">Random Employee</button></li>
-          <li class="controls"><button id="Populate">Show Employees</button></li>
-          <li class="controls"><button id="unPopulate">Hide Employees</buttin></li>
-          <li class="controls"><button id="Sort">Sort Alphbetically</button></li>
+          <li class="controls"><button id="Populate">Display Employees</button></li>
+          <li class="controls"><button id="unPopulate">Hide All Employees</buttin></li>
+          <li class="controls"><button id="SortA">Sort Ascending</button></li>
+          <li class="controls"><button id="SortD">Sort Descending</button></li>
           <li class="controls"><button id="ClearAll">Delete All</button></li>
         </ul>
       </fieldset>

@@ -1,6 +1,4 @@
-//This is used
-
-//Employee constructor to take input from form
+//Employee constructor used to store form imformation
 var Employee = function(fName, lName, empNum, title, review, salary){
   this.fName = fName || 'Jake';
   this.lName = lName || 'Scearcy';
@@ -18,6 +16,7 @@ var main = function() {
   var inst = 0;
   var $myList = $('#EmpTable');
   var employees = [];
+  //allows list elements to be moved with the mouse for custom sorting
   $myList.sortable({
     appendto: document.body,
   })
@@ -69,8 +68,15 @@ var main = function() {
     e.preventDefault();
   })
   //sort button action - runs the sorting function and feeds the array into it
-  $('#Sort').click(function(e){
-    sortList(sorterList);
+  $('#SortA').click(function(e){
+    sortListA(sorterList);
+    deleteButton();
+    hideButton();
+    e.preventDefault();
+  })
+  //same as above, but references a
+  $('#SortD').click(function(e){
+    sortListD(sorterList);
     deleteButton();
     hideButton();
     e.preventDefault();
@@ -107,13 +113,13 @@ var main = function() {
     $myListItem.append($clearButton);
     $myList.append($myListDiv.append($myListItem.append($hideButton)));
   }
-  //function to sort the list by last name
-  function sortList(array){
+  //function to sort the list by last name - ascending
+  function sortListA(array){
     array.sort(function(a,b){
        var keyA = a.lName.toUpperCase() + a.fName.toUpperCase();
        var keyB = b.lName.toUpperCase() + b.fName.toUpperCase();
-       if (keyA < keyB) return -1;
-       if (keyA > keyB) return 1;
+       if (keyA < keyB) return -1; //a
+       if (keyA > keyB) return 1; //b
        return 0;
      });
      $('#EmpTable').empty();
@@ -121,24 +127,32 @@ var main = function() {
        displayEmployees(obj);
      })
    }
+   function sortListD(array){
+     array.sort(function(a,b){
+        var keyA = a.lName.toUpperCase() + a.fName.toUpperCase();
+        var keyB = b.lName.toUpperCase() + b.fName.toUpperCase();
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+        return 0;
+      });
+      $('#EmpTable').empty();
+      array.forEach(function(obj){
+        displayEmployees(obj);
+      })
+    }
    //function to change class on the review list item depending on score
    function reviewColor(obj){
      switch(parseInt(obj.review)){
       case 1:
         return '<li class="bad"> ';
-        break;
       case 2:
         return '<li class="bad"> ';
-        break;
       case 3:
         return '<li class="satisfactory"> '
-        break;
       case 4:
         return '<li class="good">'
-        break;
       case 5:
         return '<li class="good">'
-        break;
       default:
         return '<li>'
      }
