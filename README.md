@@ -14,4 +14,4 @@ Delete All will clear the screen as well as delete all employees from memory.
 
 Total Salaries calculates the total salary of every employee currently displayed on screen only
 
-##The list is click and drag sortable
+###The list is click and drag sortable
