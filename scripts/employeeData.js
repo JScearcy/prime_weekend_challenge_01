@@ -11,11 +11,17 @@ var Employee = function(fName, lName, empNum, title, review, salary){
 //the main jQuery event listener
 var main = function() {
   //variables used throughout the jquery functions
+  var employees = [];
   var sorterList = [];
-  var $salies = $('span#TotalSalary');
   var inst = 0;
   var $myList = $('#EmpTable');
-  var employees = [];
+  var $firstName = $('#FirstName');
+  var $lastName = $('#LastName');
+  var $emNum = $('#EmpNum');
+  var $titled = $('#Title');
+  var $rev = $('#Review');
+  var $sal = $('#Salary');
+  var $salies = $('span#TotalSalary');
   //allows list elements to be moved with the mouse for custom sorting
   $myList.sortable({
     appendto: document.body,
@@ -23,8 +29,14 @@ var main = function() {
   //submit button when the form is filled out
   $('#Submit').click(function(e){
     //take form data and store it as an object
-    var $emp = new Employee($('#FirstName').val(), $('#LastName').val(), $('#EmpNum').val(),
-                            $('#Title').val(), $('#Review').val(), $('#Salary').val());
+    var $emp = new Employee(
+                            $firstName.val(),
+                            $lastName.val(),
+                            $emNum.val(),
+                            $titled.val(),
+                            $rev.val(),
+                            $sal.val()
+                           );
     $emp.instance = inst; //a unique instance number to avoid duplicate issues
     inst += 1;
     employees.push($emp);
@@ -33,11 +45,11 @@ var main = function() {
   })
   //clear the screen of all employees
   $('#ClearAll').click(function(e){
-    $('#EmpTable').empty();
-    sorterList = [];
-    employees = [];
-    inst = 0;
-    $('span#TotalSalary').text(salaryUpdate(sorterList));
+      $myList.empty();
+      sorterList = [];
+      employees = [];
+      inst = 0;
+      $salies.text(salaryUpdate(sorterList));
     e.preventDefault();
   })
   //show the data stored in the variable using function defined below
@@ -57,7 +69,7 @@ var main = function() {
   })
   //hide but keep employees in memory
   $('#unPopulate').click(function(e){
-    $('#EmpTable').empty();
+    $myList.empty();
     sorterList.forEach(function(obj){
       employees.push(obj);
     })
@@ -74,14 +86,14 @@ var main = function() {
     hideButton();
     e.preventDefault();
   })
-  //same as above, but references a
+  //same as above, but sorts the opposite way
   $('#SortD').click(function(e){
     sortListD(sorterList);
     deleteButton();
     hideButton();
     e.preventDefault();
   })
-  //create an Employee object out of the list provided
+  //create an randomized Employee object out of the list provided - in separate js file nameGen.js
   $('#RandEmp').click(function(e){
     var thisEmp = nameTitleGen();
     thisEmp.instance = inst;
@@ -107,8 +119,11 @@ var main = function() {
                       id: emp.lName + emp.instance});
     $hideButton.html('Hide');
     $myListItem.attr({class: 'empListItem'});
-    var listtext = $('<li id="' + emp.fName + '">' + emp.lName + ", " + emp.fName + '<li>Emp. Num: ' + emp.empNum
-                    + '<li>Title: ' + emp.title + reviewColor(emp)+ 'Review Score: ' + emp.review + '<li>Salary: $' + emp.salary.toLocaleString() + '</li>');
+    var listtext = $('<li id="' + emp.fName + '">' + emp.lName + ", " + emp.fName +
+                     '<li>Emp. Num: ' + emp.empNum +
+                     '<li>Title: ' + emp.title +
+                     reviewColor(emp) + 'Review Score: ' + emp.review +
+                     '<li>Salary: $' + emp.salary.toLocaleString() + '</li>');
     $myListItem.append(listtext);
     $myListItem.append($clearButton);
     $myList.append($myListDiv.append($myListItem.append($hideButton)));
@@ -122,7 +137,7 @@ var main = function() {
        if (keyA > keyB) return 1; //b
        return 0;
      });
-     $('#EmpTable').empty();
+     $myList.empty();
      array.forEach(function(obj){
        displayEmployees(obj);
      })
@@ -136,7 +151,7 @@ var main = function() {
         if (keyA > keyB) return -1;
         return 0;
       });
-      $('#EmpTable').empty();
+      $myList.empty();
       array.forEach(function(obj){
         displayEmployees(obj);
       })
@@ -149,13 +164,13 @@ var main = function() {
       case 2:
         return '<li class="bad"> ';
       case 3:
-        return '<li class="satisfactory"> '
+        return '<li class="satisfactory">';
       case 4:
-        return '<li class="good">'
+        return '<li class="good">';
       case 5:
-        return '<li class="good">'
+        return '<li class="good">';
       default:
-        return '<li>'
+        return '<li>';
      }
    }
    //update the total of salaries being displayed
@@ -178,7 +193,7 @@ var main = function() {
            sorterList.splice(i, 1);
          }
        })
-       $('span#TotalSalary').text(salaryUpdate(sorterList));
+       $salies.text(salaryUpdate(sorterList));
      })
    }
    //hide button function to hide but keep employee in memory
@@ -192,7 +207,7 @@ var main = function() {
            sorterList.splice(i, 1);
          }
        })
-       $('span#TotalSalary').text(salaryUpdate(sorterList));
+       $salies.text(salaryUpdate(sorterList));
      })
    }
    // reset input form
@@ -201,6 +216,7 @@ var main = function() {
      $('select').prop('selectedIndex', 0);
    }
 }
+
 
 
 $(main)
