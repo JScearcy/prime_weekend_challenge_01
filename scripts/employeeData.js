@@ -131,10 +131,10 @@ var main = function() {
   //function to sort the list by last name - ascending
   function sortListA(array){
     array.sort(function(a,b){
-       var keyA = a.lName.toUpperCase() + a.fName.toUpperCase();
-       var keyB = b.lName.toUpperCase() + b.fName.toUpperCase();
-       if (keyA < keyB) return -1; //a
-       if (keyA > keyB) return 1; //b
+       var first = a.lName.toUpperCase() + a.fName.toUpperCase();
+       var second = b.lName.toUpperCase() + b.fName.toUpperCase();
+       if (first < second) return -1; //a
+       if (first > second) return 1; //b
        return 0;
      });
      $myList.empty();
@@ -145,10 +145,10 @@ var main = function() {
    //function to sort list by last name - descending
    function sortListD(array){
      array.sort(function(a,b){
-        var keyA = a.lName.toUpperCase() + a.fName.toUpperCase();
-        var keyB = b.lName.toUpperCase() + b.fName.toUpperCase();
-        if (keyA < keyB) return 1;
-        if (keyA > keyB) return -1;
+        var first = a.lName.toUpperCase() + a.fName.toUpperCase();
+        var second = b.lName.toUpperCase() + b.fName.toUpperCase();
+        if (first < second) return 1;
+        if (first > second) return -1;
         return 0;
       });
       $myList.empty();
