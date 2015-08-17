@@ -127,6 +127,7 @@ var main = function() {
        displayEmployees(obj);
      })
    }
+   //function to sort list by last name - descending
    function sortListD(array){
      array.sort(function(a,b){
         var keyA = a.lName.toUpperCase() + a.fName.toUpperCase();
@@ -180,6 +181,7 @@ var main = function() {
        $('span#TotalSalary').text(salaryUpdate(sorterList));
      })
    }
+   //hide button function to hide but keep employee in memory
    function hideButton() {
      $('button.hideOne').click(function(){
        var thisId = $(this).attr('id');
@@ -193,6 +195,7 @@ var main = function() {
        $('span#TotalSalary').text(salaryUpdate(sorterList));
      })
    }
+   // reset input form
    function resetForm(){
      $('input.field').val('');
      $('select').prop('selectedIndex', 0);
